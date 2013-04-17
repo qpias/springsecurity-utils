@@ -17,20 +17,20 @@ import org.springframework.web.filter.OncePerRequestFilter;
  */
 public class IpFilter extends OncePerRequestFilter {
 
-        List<String> authorizedURLs;
+        List<String> authorizedIPs;
 
-        public void setAuthorizedURLs(List<String> authorizedURLs) {
-                this.authorizedURLs = authorizedURLs;
+        public void setAuthorizedIPs(List<String> authorizedIPs) {
+                this.authorizedIPs = authorizedIPs;
         }
 
         @Override
         protected void doFilterInternal(HttpServletRequest request,
                         HttpServletResponse response, FilterChain filterChain)
                         throws ServletException, IOException {
-                if (this.authorizedURLs.contains(request.getRemoteAddr()))
+                if (this.authorizedIPs.contains(request.getRemoteAddr()))
                         filterChain.doFilter(request, response);
                 else
-                        throw new AccessDeniedException("no access from your url: "+request.getRemoteAddr());   
+                        throw new AccessDeniedException("no access from your ip: "+request.getRemoteAddr());   
         }
 
 }

@@ -9,7 +9,7 @@
 </bean>
 
 <bean id="iPFilter" class="fi.ipss.isteer.dialog.authentication.IpFilter">
-    <property name="authorizedURLs">
+    <property name="authorizedIPs">
         <list>
             <value>127.0.0.1</value>
         </list>
