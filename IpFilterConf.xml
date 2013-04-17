@@ -1,0 +1,18 @@
+<bean id="filterChainProxy"
+          class="org.springframework.security.web.FilterChainProxy">
+    <constructor-arg>
+        <list>
+            <security:filter-chain pattern="/**"
+                                   filters="iPFilter"/>
+        </list>
+    </constructor-arg>
+</bean>
+
+<bean id="iPFilter" class="fi.ipss.isteer.dialog.authentication.IpFilter">
+    <property name="authorizedURLs">
+        <list>
+            <value>127.0.0.1</value>
+        </list>
+    </property>
+</bean>
+
